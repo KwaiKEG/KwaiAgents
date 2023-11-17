@@ -1,0 +1,10 @@
+bs4
+pandas
+docstring_parser
+lunar_python==1.3.2
+duckduckgo-search==3.8.4
+selenium==4.1.4
+webdriver-manager==3.8.6
+openai==0.27.8
+translate==3.6.1
+ephem==4.1.4
