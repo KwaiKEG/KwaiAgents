@@ -9,15 +9,15 @@
 <br>
 
 <p align="center">
-      📚 <a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">Dataset</a> | 📚 <a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">Benchmark</a> |🤗 <a href="https://huggingface.co/collections/kwaikeg/kagentlms-6551e685b5ec9f9a077d42ef">Models</a> | 📑 <a href="https://arxiv.org/">Paper</a>
+      📚 <a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">Dataset</a> | 📚 <a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">Benchmark</a> | 🤗 <a href="https://huggingface.co/collections/kwaikeg/kagentlms-6551e685b5ec9f9a077d42ef">Models</a> | 📑 <a href="http://arxiv.org/abs/2312.04889">Paper</a>
 <br>
 
 
 KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套Agent系列工作。开源的内容包括
-1. **KAgentSys-Lite**：基于开源的搜索引擎、浏览器、时间、日历、天气等工具实现的实验级Agent Loop，比较论文中的系统仅缺失记忆机制、以及部分搜索能力
+1. **KAgentSys-Lite**：论文中KAgentSys的轻量版系统，其保留了部分原系统的功能。与功能齐全的系统相比，KAgentSys-Lite（1）缺少部分工具；（2）缺乏记忆机制；（3）性能稍有降低；（4）不同的代码库，Lite版本基于开源项目如BabyAGI和Auto-GPT。尽管有这些变更，KAgentSys-Lite在众多开源Agent系统中仍具有较好的性能。
 2. **KAgentLMs**：经过论文中提出的Meta-agent tuning过后，具有Agents的规划、反思、工具使用等能力的系列大模型
-3. **KAgentInstruct**：论文中Meta-agent生成的指令微调数据
-4. **KAgentBench**：>三千条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等
+3. **KAgentInstruct**：超过20w GPT-4生成，部分人工编辑的Agent相关的指令微调数据
+4. **KAgentBench**：>超过三千条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等
 
 
 <table>
@@ -27,7 +27,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
     <tr>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a></td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a><p>(upcoming)</p></td>
-        <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a><p>(upcoming)</p></td>
+        <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a></td>
     </tr>
     <tr>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_baichuan2_13b_mat">Baichuan2-13B-MAT</a></td>
@@ -39,6 +39,38 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 <p align="center">
     <img src="blob/overview.png"/>
 <p>
+
+## 动态
+* 2023.12.13 - Benchmark和评测脚本 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) 公开 
+* 2023.12.08 - 技术报告 [[link]](https://arxiv.org/abs/2312.04889) 公开
+* 2023.11.17 - 项目公开
+
+## 评测表现
+1. KAgentLMs在Benchmark上的表现
+
+|                | Scale | Planning | Tool-use | Reflection | Concluding | Profile | Overall Score |
+|----------------|-------|----------|----------|------------|------------|---------|---------------|
+| GPT-3.5-turbo  |   -   |  18.55   |  15.89   |    5.32    |   37.26    |  35.42  |     21.72     |
+| Llama2         |  13B  |   0.15   |   0.23   |    0.08    |   16.60    |  17.73  |      5.22     |
+| ChatGLM3       |  6B   |   7.87   |   6.82   |    4.49    |   30.01    |  30.14  |     13.82     |
+| Qwen           |  7B   |  13.34   |  10.87   |    4.73    |   36.24    |  34.99  |     18.36     |
+| Baichuan2      |  13B  |   6.70   |  10.11   |    4.25    |   24.97    |  19.08  |     12.54     |
+| ToolLlama      |  7B   |   0.20   |   3.44   |    0.54    |   15.62    |  10.66  |      5.50     |
+| AgentLM        |  13B  |   0.17   |   0.09   |    0.05    |   16.30    |  15.22  |      4.86     |
+| Qwen-MAT       |  7B   |  31.64   |  28.26   |   29.50    |   44.85    |  44.78  |     34.20     |
+| Baichuan2-MAT  |  13B  |  37.27   |  34.82   |   32.06    |   48.01    |  41.83  |     38.49     |
+
+
+2. KAgentSys在人工评测上的表现 （百分号前的表示通过率，括号后表示平均分）
+
+|                 | Scale   | NoAgent         | ReACT          | Auto-GPT        | KAgentSys       |
+|-----------------|---------|-----------------|----------------|-----------------|-----------------|
+| GPT-4           | -       | 57.21% (3.42)    | 68.66% (3.88)   | 79.60% (4.27)    | 83.58% (4.47)    |
+| GPT-3.5-turbo   | -       | 47.26% (3.08)    | 54.23% (3.33)   | 61.74% (3.53)    | 64.18% (3.69)    |
+| Qwen            | 7B      | 52.74% (3.23)    | 51.74% (3.20)   | 50.25% (3.11)    | 54.23% (3.27)    |
+| Baichuan2       | 13B     | 54.23% (3.31)    | 55.72% (3.36)   | 57.21% (3.37)    | 58.71% (3.54)    |
+| Qwen-MAT        | 7B      | -                | 58.71% (3.53)   | 65.67% (3.77)    | 67.66% (3.87)    |
+| Baichuan2-MAT   | 13B     | -                | 61.19% (3.60)   | 66.67% (3.86)    | 74.13% (4.11)    |
 
 ## 使用指南
 
@@ -129,3 +161,37 @@ kagentsys --query="刘德华老婆是谁？" --llm_name="kagentlms_qwen_7b_mat" 
 **提示**：
 1. 如果需要用到 browse_website 工具，需要在服务器上配置[chromedriver](https://chromedriver.chromium.org/getting-started)
 2. 如果多次显示搜索失败，可能是网络无法访问duckduckgo_search，可以通过设置`http_proxy`解决
+
+
+### KAgentBench效果评估
+仅需两行代码就可以:
+```bash
+cd benchmark
+python infer_qwen.py qwen_benchmark_res.jsonl
+python benchmark_eval.py ./benchmark_eval.jsonl ./qwen_benchmark_res.jsonl
+```
+上面的命令会输出以下结果
+```
+plan : 31.64, tooluse : 28.26, reflextion : 29.50, conclusion : 44.85, profile : 44.78, overall : 34.20
+```
+更多细节请参考 <a href="benchmark/">benchmark</a> 
+
+
+## Citation
+```
+@article{pan2023kwaiagents,
+  author    = {Haojie Pan and
+               Zepeng Zhai and
+               Hao Yuan and
+               Yaojia Lv and
+               Ruiji Fu and
+               Ming Liu and
+               Zhongyuan Wang and
+               Bing Qin
+               },
+  title     = {KwaiAgents: Generalized Information-seeking Agent System with Large Language Models},
+  journal   = {CoRR},
+  volume    = {abs/2312.04889},
+  year      = {2023}
+}
+```
