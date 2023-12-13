@@ -1,0 +1,6 @@
+transformers_stream_generator
+vllm
+nltk
+pandas
+rouge
+rouge_chinese
