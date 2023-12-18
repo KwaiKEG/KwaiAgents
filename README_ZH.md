@@ -16,7 +16,7 @@
 KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套Agent系列工作。开源的内容包括
 1. **KAgentSys-Lite**：论文中KAgentSys的轻量版系统，其保留了部分原系统的功能。与功能齐全的系统相比，KAgentSys-Lite（1）缺少部分工具；（2）缺乏记忆机制；（3）性能稍有降低；（4）不同的代码库，Lite版本基于开源项目如BabyAGI和Auto-GPT。尽管有这些变更，KAgentSys-Lite在众多开源Agent系统中仍具有较好的性能。
 2. **KAgentLMs**：经过论文中提出的Meta-agent tuning过后，具有Agents的规划、反思、工具使用等能力的系列大模型
-3. **KAgentInstruct**：超过20w GPT-4生成，部分人工编辑的Agent相关的指令微调数据
+3. **KAgentInstruct**：超过20w（部分人工编辑）的Agent相关的指令微调数据
 4. **KAgentBench**：>超过三千条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等
 
 
