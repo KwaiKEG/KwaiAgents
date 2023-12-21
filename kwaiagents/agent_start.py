@@ -22,6 +22,7 @@ class AgentService(object):
         llm_name = input_dict.get("llm_name", "").lower()
         cfg.fast_llm_model = llm_name
         cfg.smart_llm_model = llm_name
+        cfg.max_tokens_num = input_dict.get("max_tokens_num", 4096)
         if llm_name == "gpt-4":
             cfg.fast_llm_model = "gpt-3.5-turbo"
 
@@ -106,6 +107,7 @@ def main():
     parser.add_argument("--agent_instructions", type=str, default="", help="The instructions of how agent thinking, acting, or talking")
     parser.add_argument("--external_knowledge", type=str, default="", help="The link of external knowledge")
     parser.add_argument("--lang", type=str, default="en", choices=["en", "zh"], help="The language of the overall system")
+    parser.add_argument("--max_tokens_num", type=int, default=4096, help="Maximum length of model input")
 
     args = parser.parse_args()
 

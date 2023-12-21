@@ -115,7 +115,7 @@ Generate helpful answers **in English** for users:
 """
 
 
-def make_planning_prompt(agent_profile, goal, used_tools, memory, lang="en"):
+def make_planning_prompt(agent_profile, goal, used_tools, memory, max_tokens_num, tokenizer, lang="en"):
     tool_spec = make_tool_specification(used_tools, lang)
     template = planning_prompt_template if lang == "zh" else planning_prompt_template_en
     prompt = template.format(**{
@@ -128,7 +128,7 @@ def make_planning_prompt(agent_profile, goal, used_tools, memory, lang="en"):
         "memory": memory,
         "goal": goal
     })
-
+    prompt = prompt_truncate(tokenizer, prompt, memory, max_tokens_num)
     return prompt
 
 
@@ -148,7 +148,7 @@ def make_tool_specification(tools, lang="en"):
     return tool_spec
 
 
-def make_task_conclusion_prompt(agent_profile, goal, memory, lang="en"):
+def make_task_conclusion_prompt(agent_profile, goal, memory, max_tokens_num, tokenizer, lang="en"):
     template = conclusion_prompt_template if lang == "zh" else conclusion_prompt_template_en
     prompt = template.format(**{
         "agent_name": agent_profile.name,
@@ -158,7 +158,7 @@ def make_task_conclusion_prompt(agent_profile, goal, memory, lang="en"):
         "memory": memory,
         "goal": goal
     })
-
+    prompt = prompt_truncate(tokenizer, prompt, memory, max_tokens_num)
     return prompt
 
 
@@ -170,4 +170,31 @@ def make_no_task_conclusion_prompt(query, conversation_history=""):
         prompt += f"User: {query}\nAssistant:"
     else:
         prompt = query
+    return prompt
+
+
+def prompt_truncate(tokenizer, prompt, memory, input_max_length):
+    kwargs = dict(add_special_tokens=False)
+    prompt_tokens = tokenizer.encode(prompt, **kwargs)
+    if len(prompt_tokens) > input_max_length:
+        if memory is None or memory not in prompt:
+            prompt_tokens = prompt_tokens[:input_max_length//2] + prompt_tokens[-input_max_length//2:]
+        else:
+            memory_prompt_tokens = tokenizer.encode(memory, add_special_tokens=False)
+            sublst_len = len(memory_prompt_tokens)
+            start_index = None
+            for i in range(len(prompt_tokens) - sublst_len + 1):
+                if prompt_tokens[i:i+sublst_len] == memory_prompt_tokens:
+                    start_index = i
+                    break
+            
+            if start_index is None:
+                prompt_tokens = prompt_tokens[:input_max_length//2] + prompt_tokens[-input_max_length//2:]
+            else:
+                other_len = len(prompt_tokens) -  sublst_len
+                if input_max_length > other_len:
+                    max_memory_len = input_max_length - other_len
+                    memory_prompt_tokens = memory_prompt_tokens[:max_memory_len//2] + memory_prompt_tokens[-max_memory_len//2:]
+                    prompt_tokens = prompt_tokens[:start_index] + memory_prompt_tokens + prompt_tokens[start_index + sublst_len:]
+    prompt = tokenizer.decode(prompt_tokens, skip_special_tokens=True)
     return prompt

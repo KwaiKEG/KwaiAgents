@@ -9,6 +9,7 @@ from typing import Dict, List
 import uuid
 from datetime import datetime
 from lunar_python import Lunar, Solar
+from transformers import AutoTokenizer
 
 from kwaiagents.tools import ALL_NO_TOOLS, ALL_TOOLS, FinishTool, NoTool
 from kwaiagents.llms import create_chat_completion
@@ -59,6 +60,7 @@ class KAgentSysLite(object):
         self.lang = lang
         self.max_task_num = agent_profile.max_iter_num
         self.session_id = session_id if session_id else str(uuid.uuid1())
+        self.tokenizer = self.initialize_tokenizer(self.cfg.fast_llm_model)
 
         self.initialize_logger()
         self.initialize_memory()
@@ -70,6 +72,21 @@ class KAgentSysLite(object):
 
     def initialize_memory(self):
         pass
+    
+    def initialize_tokenizer(self, llm_name):
+        if "baichuan" in llm_name:
+            model_name = "kwaikeg/kagentlms_baichuan2_13b_mat"
+        elif "qwen" in llm_name:
+            model_name = "kwaikeg/kagentlms_qwen_7b_mat"
+        else:
+            model_name = "gpt2"
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_name,
+            use_fast=False,
+            padding_side='left',
+            trust_remote_code=True
+        )
+        return tokenizer
 
     def tool_retrival(self):
         if "notool" in self.agent_profile.tools:
@@ -106,7 +123,7 @@ class KAgentSysLite(object):
         return memory
 
     def task_plan(self, goal, memory):
-        prompt = make_planning_prompt(self.agent_profile, goal, self.tools, memory, lang=self.lang)
+        prompt = make_planning_prompt(self.agent_profile, goal, self.tools, memory, self.cfg.max_tokens_num, self.tokenizer, lang=self.lang)
         # print(f'\n************** TASK PLAN AGENT PROMPT *************')
         # print(prompt)
         try:
@@ -172,7 +189,7 @@ class KAgentSysLite(object):
         if no_task_planned:
             prompt = make_no_task_conclusion_prompt(goal, conversation_history)
         else:
-            prompt = make_task_conclusion_prompt(self.agent_profile, goal, memory, lang=self.lang)
+            prompt = make_task_conclusion_prompt(self.agent_profile, goal, memory, self.cfg.max_tokens_num, self.tokenizer, lang=self.lang)
         # print(f'\n************** CONCLUSION AGENT PROMPT *************')
         # print(prompt)
 
@@ -250,7 +267,6 @@ class KAgentSysLite(object):
                         break
                     self.chain_logger.put("thinking")
                     memory = self.memory_retrival(goal, history, complete_task_list)
-
                     new_tasks = self.task_plan(goal, memory)
 
                     for new_task in new_tasks:
