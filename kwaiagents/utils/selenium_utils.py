@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
@@ -37,6 +39,9 @@ def get_web_driver(selenium_web_browser):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('--headless')
+        proxy = os.getenv("http_proxy")
+        if proxy:
+            options.add_argument(f'--proxy-server={proxy}')
         current_driver = webdriver.Chrome(options=options)
     return current_driver
 
