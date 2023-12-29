@@ -2,7 +2,7 @@ from .commons import NoTool, NoToolResult, FinishTool, FinishResult
 from .search import SearchTool
 from .browser import BrowserTool
 from .weather import WeatherTool
-from .calendar import CalendarTool
+from .calendars import CalendarTool
 from .timedelta import TimeDeltaTool
 from .solarterms import SolarTermsTool
 
