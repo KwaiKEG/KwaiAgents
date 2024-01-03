@@ -79,11 +79,13 @@ class FastChatClient(object):
         headers = {"Content-Type": "application/json"}
         if "baichuan" in self.model:
             prompt = self.make_baichuan_prompt(query, system, history)
+            stop = None
         elif "qwen" in self.model:
             prompt = self.make_qwen_prompt(query, system, history)
             stop = "<|endoftext|>"
         else:
             prompt = self.make_prompt(query, system, history)
+            stop = None
         data = {
             "model": self.model,
             "prompt": prompt,
