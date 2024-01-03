@@ -81,6 +81,7 @@ class FastChatClient(object):
             prompt = self.make_baichuan_prompt(query, system, history)
         elif "qwen" in self.model:
             prompt = self.make_qwen_prompt(query, system, history)
+            stop = "<|endoftext|>"
         else:
             prompt = self.make_prompt(query, system, history)
         data = {
@@ -89,7 +90,8 @@ class FastChatClient(object):
             "temperature": 0.1,
             "top_p": 0.75,
             "top_k": 40,
-            "max_tokens": 512
+            "max_tokens": 512,
+            "stop": stop,
         }
         resp = requests.post(url=url, json=data, headers=headers)
         response = resp.json() # Check the JSON Response Content documentation below
