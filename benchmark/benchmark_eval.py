@@ -196,7 +196,10 @@ def calculate_rouge_l(system_generated_summary, reference_summary):
     reference_summary = ' '.join(mixed_tokenize(reference_summary))
     system_generated_summary = ' ' if system_generated_summary == '' else system_generated_summary
     reference_summary = ' ' if reference_summary == '' or reference_summary == '.' else reference_summary
-    scores = rouge.get_scores(system_generated_summary, reference_summary, avg=True)
+    try:
+        scores = rouge.get_scores(system_generated_summary, reference_summary, avg=True)
+    except:
+        return 0.
     return round(scores['rouge-l']['f'],5)
 
 
@@ -497,7 +500,7 @@ def conclusion_metrics(label_dict, predict_dict):
                 if type(predict) == dict:
                     predict = json.dumps(predict,ensure_ascii=False)
                 for label in label_response_list:
-                    rouge_res = rouge_score(label,predict)
+                    rouge_res = rouge_score(label['golden_result'],predict)
                     predict_pre_label_score.append(rouge_res)
             predict_pre_template_score.append(max(predict_pre_label_score))
 
@@ -525,7 +528,7 @@ def profile_metrics(label_dict, predict_dict):
             all_rouge.append(0)
         else:
             for label in label_response_list:
-                rouge_res = rouge_score(label,predict)
+                rouge_res = rouge_score(label['golden_result'],predict)
                 rouge_list.append(rouge_res)
             all_rouge.append(max(rouge_list))
     profile_avg_rouge = sum(all_rouge)/len(all_rouge)
