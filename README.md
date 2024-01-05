@@ -25,7 +25,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
     </tr>
     <tr>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a></td>
-        <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a><p>(upcoming)</p></td>
+        <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a></td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a></td>
     </tr>
     <tr>
@@ -46,6 +46,8 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 <p>
 
 ## News
+* 2023.1.5 - Training data [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) released.
+* 2023.12.27 - 🔥 KwaiAgents have been reported on many sites. [[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0), etc. 
 * 2023.12.13 - The benchmark and evaluation code [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) released 
 * 2023.12.08 - Technical report [[link]](https://arxiv.org/abs/2312.04889) released
 * 2023.11.17 - Initial release
@@ -173,6 +175,7 @@ options:
   --external_knowledge EXTERNAL_KNOWLEDGE
                         The link of external knowledge
   --lang {en,zh}        The language of the overall system
+  --max_tokens_num      Maximum length of model input
 ```
 
 **Note**:

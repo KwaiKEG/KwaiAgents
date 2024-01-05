@@ -26,7 +26,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
     </tr>
     <tr>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a></td>
-        <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a><p>(upcoming)</p></td>
+        <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a></td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a></td>
     </tr>
     <tr>
@@ -47,6 +47,8 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 <p>
 
 ## 动态
+* 2023.1.5 - 训练数据 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) 公开.
+* 2023.12.27 - 🔥 KwaiAgents 被国内外多个媒体报道[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0)等. 
 * 2023.12.13 - Benchmark和评测脚本 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) 公开 
 * 2023.12.08 - 技术报告 [[link]](https://arxiv.org/abs/2312.04889) 公开
 * 2023.11.17 - 项目公开
@@ -162,7 +164,8 @@ kagentsys --query="刘德华老婆是谁？" --llm_name="kagentlms_qwen_7b_mat" 
 | --agent_bio | str |  | agent简介，简短的描述 |
 | --agent_instructions | str | | agent的指导原则，描述agent如何思考、行动、或交流 |
 | --external_knowledge | str |  | 外部知识链接 |
-| --language | str | en | 系统的语言，可选（英语/中文） |
+| --lang | str | en | 系统的语言，可选（英语/中文） |
+| --max_tokens_num | int | 4096 | Prompt截断最大长度 |
 
 **提示**：
 1. 如果需要用到 browse_website 工具，需要在服务器上配置[chromedriver](https://chromedriver.chromium.org/getting-started)
