@@ -100,40 +100,40 @@ class FastChatClient(object):
 
     @staticmethod
     def make_prompt(query, system, history):
-        prompt = ""
         if not history:
             history = list()
-        history = history + [(query, '')]
-        for turn_idx, (q, r) in enumerate(history):
-            if turn_idx == 0:
-                prompt += system
-            query = query + '<reserved_107>'
-
+        if system:
+            prompt = system + "\n"
+        else:
+            prompt = ''
+        for q, r in history:
             prompt += 'User:' + q + '\nAssistant' + r + "\n"
+        prompt += query
         return prompt
 
     @staticmethod
     def make_baichuan_prompt(query, system, history):
-        prompt = ""
         if not history:
             history = list()
-        history = history + [(query, '')]
-        for turn_idx, (q, r) in enumerate(history):
-            if turn_idx == 0:
-                prompt += system
-            query = query + '<reserved_107>'
-
+        if system:
+            prompt = system + "\n"
+        else:
+            prompt = ''
+        for q, r in history:
             prompt += '<reserved_106>' + q + '<reserved_107>' + r 
+        prompt += query
         return prompt
 
     @staticmethod
     def make_qwen_prompt(query, system, history):
-        prompt = ""
-        history = history + [(query, '')]
-        for turn_idx, (q, r) in enumerate(history):
-            if turn_idx == 0:
-                prompt += '<|im_start|>' + system + '<|im_end|>\n'
+        if not history:
+            history = list()
+        if system:
+            prompt = '<|im_start|>' + system + '<|im_end|>\n'
+        else:
+            prompt = ''
+        for q, r in history:
             response = r if r else ''
-
             prompt += '<|im_start|>user\n' + q + '<|im_end|>\n<|im_start|>assistant\n' + response + "<|im_end|>\n"
+        prompt += query
         return prompt

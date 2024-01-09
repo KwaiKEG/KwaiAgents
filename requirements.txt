@@ -8,3 +8,5 @@ webdriver-manager==3.8.6
 openai==0.27.8
 translate==3.6.1
 ephem==4.1.4
+transformers>=4.33.2
+tiktoken

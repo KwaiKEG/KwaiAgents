@@ -19,7 +19,6 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 3. **KAgentInstruct**：超过20w（部分人工编辑）的Agent相关的指令微调数据
 4. **KAgentBench**：>超过三千条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等
 
-
 <table>
     <tr>
         <th>模型</th><th>训练数据</th><th>Benchmark</th>
@@ -34,11 +33,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
     </tr>
 </table>
 
-<br>
-
-<p align="center">
-    <img src="blob/example-zh.gif"/>
-<p>
+<img src="blob/example-zh.gif"/>
 
 <br>
 
@@ -83,6 +78,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 ## 使用指南
 
 ### AgentLMs 系列模型使用
+#### 在GPU上用vLLM部署
 我们建议用[vLLM](https://github.com/vllm-project/vllm)和[FastChat](https://github.com/lm-sys/FastChat)来部署模型推理服务，首先需要安装对应的包(详细使用请参考两个项目对应文档)：
 1. 对于 Qwen-7B-MAT，按如下方法安装
 ```bash
@@ -118,6 +114,19 @@ curl http://localhost:8888/v1/chat/completions \
 ```
 这里 `kagentlms_qwen_7b_mat` 要改成你部署的模型。
 
+#### 在CPU上用[Lamma.cpp](https://github.com/ggerganov/llama.cpp)部署
+llama-cpp-python 提供了类似OpenAI的API Web接口，我们可以按如下方法安装和部署。转换后的模型可以在[kwaikeg/kagentlms_qwen_7b_mat_gguf](https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat_gguf)上找到。
+```bash
+pip install "llama-cpp-python[server]"
+python3 -m llama_cpp.server --model kagentlms_qwen_7b_mat_gguf/ggml-model-q4_0.gguf --chat_format chatml --port 8888
+```
+
+最后你就可以用curl命令对应OpenAI调用格式进行模型调用啦，参考示例：
+```bash
+curl http://localhost:8888/v1/chat/completions \
+-H "Content-Type: application/json" \
+-d '{"messages": [{"role": "user", "content": "刘德华是谁"}]}'
+```
 
 ### KAgentSys-Lite 快速使用
 下载并安装环境包，建议Python>=3.10

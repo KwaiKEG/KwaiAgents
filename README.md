@@ -82,6 +82,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 ## User Guide
 
 ### Using AgentLMs
+#### Serving by [vLLM](https://github.com/vllm-project/vllm) (GPU)
 We recommend using [vLLM](https://github.com/vllm-project/vllm) and [FastChat](https://github.com/lm-sys/FastChat) to deploy the model inference service. First, you need to install the corresponding packages (for detailed usage, please refer to the documentation of the two projects):
 1. For Qwen-7B-MAT, install the corresponding packages with the following commands
 ```bash
@@ -118,6 +119,21 @@ curl http://localhost:8888/v1/chat/completions \
 ```
 Here, change `kagentlms_qwen_7b_mat` to the model you deployed.
 
+#### Serving by [Lamma.cpp](https://github.com/ggerganov/llama.cpp) (CPU)
+llama-cpp-python offers a web server which aims to act as a drop-in replacement for the OpenAI API. This allows you to use llama.cpp compatible models with any OpenAI compatible client (language libraries, services, etc). The converted model can be found in [kwaikeg/kagentlms_qwen_7b_mat_gguf](https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat_gguf).
+
+To install the server package and get started:
+```bash
+pip install "llama-cpp-python[server]"
+python3 -m llama_cpp.server --model kagentlms_qwen_7b_mat_gguf/ggml-model-q4_0.gguf --chat_format chatml --port 8888
+```
+
+Finally, you can use the curl command to invoke the model same as the OpenAI calling format. Here's an example:
+```bash
+curl http://localhost:8888/v1/chat/completions \
+-H "Content-Type: application/json" \
+-d '{"messages": [{"role": "user", "content": "Who is Andy Lau"}]}'
+```
 
 ### Using KAgentSys-Lite
 Download and install the KwaiAgents, recommended Python>=3.10
