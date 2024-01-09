@@ -33,11 +33,15 @@ def rouge_score(label,predict):
     """
     计算rouge-L 
     """
+    label,predict = str(label), str(predict)
+    if label == '' or predict == '':
+        return 0
     rouge = RougeCh()
     predict = " ".join(mixed_tokenize(predict))
     label = " ".join(mixed_tokenize(label))
     scores = rouge.get_scores(predict, label)
     return scores[0]["rouge-l"]["f"]
+
 
 def autogpt_response_process(gpt_out):
     if "web_search(" in gpt_out:
@@ -188,16 +192,6 @@ def extract_char_position(error_message: str) -> int:
         return int(match[1])
     else:
         raise ValueError("Character position not found in the error message.")
-
-def calculate_rouge_l(system_generated_summary, reference_summary):
-    system_generated_summary,reference_summary = str(system_generated_summary), str(reference_summary)
-    rouge = Rouge()
-    system_generated_summary = ' '.join(mixed_tokenize(system_generated_summary))
-    reference_summary = ' '.join(mixed_tokenize(reference_summary))
-    system_generated_summary = ' ' if system_generated_summary == '' else system_generated_summary
-    reference_summary = ' ' if reference_summary == '' or reference_summary == '.' else reference_summary
-    scores = rouge.get_scores(system_generated_summary, reference_summary, avg=True)
-    return round(scores['rouge-l']['f'],5)
 
 
 def get_ReACT_plan_and_tool(response, funcs):
@@ -377,7 +371,7 @@ def get_plan_metric(golden_thoughts, golden_toolnames, thought, tool_name):
     for golden_thought, golden_toolname in zip(golden_thoughts,golden_toolnames):
         if golden_thought == 'None' or golden_toolname == 'None':
             continue
-        thought_rouge = calculate_rouge_l(golden_thought, thought)
+        thought_rouge = rouge_score(golden_thought, thought)
         tool_em = 1 if tool_name == golden_toolname else 0
         plan_metrics.append(thought_rouge * tool_em)
     if len(plan_metrics) == 0:
@@ -398,11 +392,14 @@ def get_tool_metric(golden_toolnames, golden_tool_args, tool_name, tool_args):
             avg_arg_rouges = [1.]
         elif tool_args != {}:
             for k,v in golden_tool_arg.items():
+                match_k = False
                 for k1,v1 in tool_args.items():
                     if k1 == k:
-                        avg_arg_rouges.append(calculate_rouge_l(v, v1))
+                        avg_arg_rouges.append(rouge_score(v, v1))
+                        match_k = True
                         break
-                avg_arg_rouges.append(0.)
+                if not match_k:
+                    avg_arg_rouges.append(0.)
         else:
             avg_arg_rouges = [0.]
         arg_rouge = sum(avg_arg_rouges) / len(avg_arg_rouges) if len(avg_arg_rouges)>0 else 0 
@@ -418,18 +415,21 @@ def get_reflextion_metric(golden_thoughts, golden_toolnames, golden_tool_args, l
     for golden_thought, golden_toolname, golden_tool_arg in zip(golden_thoughts,golden_toolnames, golden_tool_args):
         if golden_thought == 'None' or golden_toolname == 'None':
             continue
-        thought_rouge = calculate_rouge_l(golden_thought, thought)
+        thought_rouge = rouge_score(golden_thought, thought)
         tool_em = 1 if tool_name == golden_toolname else 0
         avg_arg_rouges = []
         if golden_tool_arg == {} and tool_args == {}:
             avg_arg_rouges = [1.]
         elif tool_args != {}:
             for k,v in golden_tool_arg.items():
+                match_k = False
                 for k1,v1 in tool_args.items():
                     if k1 == k:
-                        avg_arg_rouges.append(calculate_rouge_l(v, v1))
+                        avg_arg_rouges.append(rouge_score(v, v1))
+                        match_k = True
                         break
-                avg_arg_rouges.append(0.)
+                if not match_k:
+                    avg_arg_rouges.append(0.)
         else:
             avg_arg_rouges = [0.]
         arg_rouge = sum(avg_arg_rouges) / len(avg_arg_rouges) if len(avg_arg_rouges)>0 else 0 
@@ -477,8 +477,6 @@ def conclusion_metrics(label_dict, predict_dict):
         for i in label_response_dict_list:
             label_response_list.append(i["golden_result"])
         predict_parsed_list = obj["model_predict"]
-        # if obj["memory_type"] != "conversation":
-        #     continue
 
         rouge_list = []
         predict_pre_template_score = []
@@ -504,7 +502,6 @@ def conclusion_metrics(label_dict, predict_dict):
         all_rouge.append(sum(predict_pre_template_score)/len(predict_pre_template_score))
 
     conclusion_avg_rouge = sum(all_rouge)/len(all_rouge)
-    # conclusion_avg_rouge = sum(all_rouge)/245
 
     return conclusion_avg_rouge
 

@@ -21,15 +21,15 @@ The specific performance of different models on benchmarks can be seen in more d
 
 |                | Scale | Planning | Tool-use | Reflection | Concluding | Profile | Overall Score |
 |----------------|-------|----------|----------|------------|------------|---------|---------------|
-| GPT-3.5-turbo  |   -   |  18.55   |  15.89   |    5.32    |   37.26    |  35.42  |     21.72     |
-| Llama2         |  13B  |   0.15   |   0.23   |    0.08    |   16.60    |  17.73  |      5.22     |
-| ChatGLM3       |  6B   |   7.87   |   6.82   |    4.49    |   30.01    |  30.14  |     13.82     |
-| Qwen           |  7B   |  13.34   |  10.87   |    4.73    |   36.24    |  34.99  |     18.36     |
-| Baichuan2      |  13B  |   6.70   |  10.11   |    4.25    |   24.97    |  19.08  |     12.54     |
-| ToolLlama      |  7B   |   0.20   |   3.44   |    0.54    |   15.62    |  10.66  |      5.50     |
-| AgentLM        |  13B  |   0.17   |   0.09   |    0.05    |   16.30    |  15.22  |      4.86     |
-| Qwen-MAT       |  7B   |  31.64   |  28.26   |   29.50    |   44.85    |  44.78  |     34.20     |
-| Baichuan2-MAT  |  13B  |  37.27   |  34.82   |   32.06    |   48.01    |  41.83  |     38.49     |
+| GPT-3.5-turbo  |   -   |  18.55   |  26.26   |    8.06    |   37.26    |  35.42  |     25.63     |
+| Llama2         |  13B  |   0.15   |   0.44   |    0.14    |   16.60    |  17.73  |      5.30     |
+| ChatGLM3       |  6B   |   7.87   |  11.84   |    7.52    |   30.01    |  30.14  |     15.88     |
+| Qwen           |  7B   |  13.34   |  18.00   |    7.91    |   36.24    |  34.99  |     21.17     |
+| Baichuan2      |  13B  |   6.70   |  16.10   |    6.76    |   24.97    |  19.08  |     14.89     |
+| ToolLlama      |  7B   |   0.20   |   4.83   |    1.06    |   15.62    |  10.66  |      6.04     |
+| AgentLM        |  13B  |   0.17   |   0.15   |    0.05    |   16.30    |  15.22  |      4.88     |
+| Qwen-MAT       |  7B   |  31.64   |  43.30   |   33.34    |   44.85    |  44.78  |     39.85     |
+| Baichuan2-MAT  |  13B  |  37.27   |  52.97   |   37.00    |   48.01    |  41.83  |     45.34     |
 
 
 
@@ -133,7 +133,7 @@ python benchmark_eval.py ./benchmark_eval.jsonl ./qwen_benchmark_res.jsonl
 ```
 The final model score is as follows:
 ```bash
-plan : 31.64, tooluse : 28.26, reflextion : 29.50, conclusion : 44.85, profile : 44.78, overall : 34.20
+plan : 31.64, tooluse : 43.30, reflextion : 33.34, conclusion : 44.85, profile : 44.78, overall : 39.85
 ```
 
 ## Citation
