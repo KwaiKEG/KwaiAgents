@@ -81,6 +81,14 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 
 ## User Guide
 
+### Prebuild environment
+Install miniconda for build environment first. Then create build env first:
+```bash
+conda create -n kagent python=3.10
+conda activate kagent
+pip install -r requirements.txt
+```
+
 ### Using AgentLMs
 #### Serving by [vLLM](https://github.com/vllm-project/vllm) (GPU)
 We recommend using [vLLM](https://github.com/vllm-project/vllm) and [FastChat](https://github.com/lm-sys/FastChat) to deploy the model inference service. First, you need to install the corresponding packages (for detailed usage, please refer to the documentation of the two projects):
