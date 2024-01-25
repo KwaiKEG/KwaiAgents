@@ -180,6 +180,8 @@ kagentsys --query="刘德华老婆是谁？" --llm_name="kagentlms_qwen_7b_mat" 
 1. 如果需要用到 browse_website 工具，需要在服务器上配置[chromedriver](https://chromedriver.chromium.org/getting-started)
 2. 如果多次显示搜索失败，可能是网络无法访问duckduckgo_search，可以通过设置`http_proxy`解决
 
+#### 使用自定义工具
+自定义工具使用可参考这个例子 <a href="examples/custom_tool_example.py">examples/custom_tool_example.py</a> 
 
 ### KAgentBench效果评估
 仅需两行代码就可以:
@@ -192,7 +194,7 @@ python benchmark_eval.py ./benchmark_eval.jsonl ./qwen_benchmark_res.jsonl
 ```
 plan : 31.64, tooluse : 43.30, reflextion : 33.34, conclusion : 44.85, profile : 44.78, overall : 39.85
 ```
-更多细节请参考 <a href="benchmark/">benchmark</a> 
+更多细节请参考 <a href="benchmark/">benchmark/</a> 
 
 
 ## Citation

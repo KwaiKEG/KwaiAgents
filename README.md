@@ -206,6 +206,8 @@ options:
 1. If you need to use the `browse_website` tool, you need to configure the [chromedriver](https://chromedriver.chromium.org/getting-started) on your server.
 2. If the search fails multiple times, it may be because the network cannot access duckduckgo_search. You can solve this by setting the `http_proxy`.
 
+#### Using Custom tools
+Custom tools usage can be found in <a href="examples/custom_tool_example.py">examples/custom_tool_example.py</a> 
 
 ### Using KAgentBench Evaluation
 We only need two lines to evaluate the agent capabilities like:
@@ -219,7 +221,7 @@ The above command will give the results like
 plan : 31.64, tooluse : 43.30, reflextion : 33.34, conclusion : 44.85, profile : 44.78, overall : 39.85
 ```
 
-Please refer to <a href="benchmark/">benchmark</a> for more details.
+Please refer to <a href="benchmark/">benchmark/</a> for more details.
 
 ## Citation
 ```

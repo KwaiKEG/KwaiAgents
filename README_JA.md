@@ -206,6 +206,8 @@ options:
 1. `browse_website` ツールを使用する必要がある場合は、サーバーで [chromedriver](https://chromedriver.chromium.org/getting-started) を設定する必要があります。
 2. 検索に何度も失敗する場合は、ネットワークが duckduckgo_search にアクセスできないためかもしれません。`http_proxy` を設定することで解決できます。
 
+#### カスタムツールの使用
+カスタムツールの使用方法は<a href="examples/custom_tool_example.py">examples/custom_tool_example.py</a>で見つけることができます"
 
 ### KAgentBench 評価の使用
 エージェントの能力を評価するために必要なのは、以下の2行だけです:

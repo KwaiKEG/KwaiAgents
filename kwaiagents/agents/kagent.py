@@ -54,7 +54,7 @@ class SingleTaskListStorage:
 
 
 class KAgentSysLite(object):
-    def __init__(self, cfg, session_id=None, agent_profile=None, lang="en"):
+    def __init__(self, cfg, session_id=None, agent_profile=None, tools=None, lang="en"):
         self.cfg = cfg
         self.agent_profile = agent_profile
         self.lang = lang
@@ -64,7 +64,7 @@ class KAgentSysLite(object):
 
         self.initialize_logger()
         self.initialize_memory()
-        self.tool_retrival()
+        self.tool_retrival(tools)
 
     def initialize_logger(self):
         self.chain_logger = ChainMessageLogger(output_streams=[sys.stdout], lang=self.lang)
@@ -88,22 +88,25 @@ class KAgentSysLite(object):
         )
         return tokenizer
 
-    def tool_retrival(self):
-        if "notool" in self.agent_profile.tools:
-            self.tools = list()
+    def tool_retrival(self, tools):
+        if tools:
+            self.tools = [tool_cls(cfg=self.cfg) for tool_cls in tools]
         else:
-            all_tools = [tool_cls(cfg=self.cfg) for tool_cls in ALL_TOOLS]
-
-            if "auto" in self.agent_profile.tools:
-                used_tools = [tool_cls(cfg=self.cfg) for tool_cls in ALL_TOOLS]
+            if "notool" in self.agent_profile.tools:
+                self.tools = list()
             else:
-                used_tools = list()
-                for tool in all_tools:
-                    if tool.zh_name in self.agent_profile.tools or tool.name in self.agent_profile.tools:
-                        used_tools.append(tool)
-            used_tools += [tool_cls(cfg=self.cfg) for tool_cls in ALL_NO_TOOLS]
+                all_tools = [tool_cls(cfg=self.cfg) for tool_cls in ALL_TOOLS]
+
+                if "auto" in self.agent_profile.tools:
+                    used_tools = [tool_cls(cfg=self.cfg) for tool_cls in ALL_TOOLS]
+                else:
+                    used_tools = list()
+                    for tool in all_tools:
+                        if tool.zh_name in self.agent_profile.tools or tool.name in self.agent_profile.tools:
+                            used_tools.append(tool)
+                used_tools += [tool_cls(cfg=self.cfg) for tool_cls in ALL_NO_TOOLS]
             
-        self.tools = used_tools
+            self.tools = used_tools
         self.name2tools = {t.name: t for t in self.tools}
 
     def memory_retrival(self, 
