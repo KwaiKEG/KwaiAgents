@@ -66,6 +66,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 | AgentLM        |  13B  |   0.17   |   0.15   |    0.05    |   16.30    |  15.22  |      4.88     |
 | Qwen-MAT       |  7B   |  31.64   |  43.30   |   33.34    |   44.85    |  44.78  |     39.85     |
 | Baichuan2-MAT  |  13B  |  37.27   |  52.97   |   37.00    |   48.01    |  41.83  |     45.34     |
+| Qwen-MAT       |  14B  |  43.17   |  63.78   |   32.14    |   45.47    |  45.22  |     49.94     |
 
 2. Human evaluation. Each result cell shows the pass rate (\%) and the average score (in parentheses)
 
