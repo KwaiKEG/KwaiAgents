@@ -46,6 +46,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 <p>
 
 ## News
+* 2024.1.29 - Qwen-14B-MAT model [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) released.
 * 2023.1.5 - Training data [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) released.
 * 2023.12.27 - 🔥 KwaiAgents have been reported on many sites. [[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0), etc. 
 * 2023.12.13 - The benchmark and evaluation code [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) released 

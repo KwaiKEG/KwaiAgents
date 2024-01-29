@@ -42,6 +42,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 <p>
 
 ## 动态
+* 2024.1.29 - Qwen-14B-MAT模型 [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) 公开.
 * 2023.1.5 - 训练数据 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) 公开.
 * 2023.12.27 - 🔥 KwaiAgents 被国内外多个媒体报道[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0)等. 
 * 2023.12.13 - Benchmark和评测脚本 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) 公开 

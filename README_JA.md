@@ -46,6 +46,7 @@ KwaiAgents は、[Kuaishou Technology](https://www.kuaishou.com/en) の [KwaiKEG
 <p>
 
 ## ニュース
+* 2024.1.29 - Qwen-14B-MAT [[リンク]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) をリリース.
 * 2023.1.5 - トレーニングデータ[[リンク]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct)をリリース。
 * 2023.12.27 - 🔥 KwaiAgents　は多くのサイトで報告されている。[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0) など。
 * 2023.12.13 - 公開されたベンチマークと評価コード[[リンク]](https://huggingface.co/datasets/kwaikeg/KAgentBench)をリリース
