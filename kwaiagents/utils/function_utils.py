@@ -15,7 +15,7 @@ def transform_to_openai_function(func):
         }
 
     returns = {
-        "description": parsed.returns.description if hasattr(parsed.returns, "returns") else "",
+        "description": parsed.returns.description if hasattr(parsed.returns, "description") else "",
         "type": parsed.returns.type_name if hasattr(parsed.returns, "type_name") else ""
     }
 
