@@ -46,6 +46,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 <p>
 
 ## News
+* 2024.4.9 - Benchmark results have been refreshed, with the Qwen1.5-14B-MAT outcomes now published.
 * 2024.1.29 - Qwen-14B-MAT model [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) released.
 * 2023.1.5 - Training data [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) released.
 * 2023.12.27 - 🔥 KwaiAgents have been reported on many sites. [[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0), etc. 
@@ -68,6 +69,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 | Qwen-MAT       |  7B   |  31.64   |  43.30   |   33.34    |   44.85    |  44.78  |     39.85     |
 | Baichuan2-MAT  |  13B  |  37.27   |  52.97   |   37.00    |   48.01    |  41.83  |     45.34     |
 | Qwen-MAT       |  14B  |  43.17   |  63.78   |   32.14    |   45.47    |  45.22  |     49.94     |
+| Qwen1.5-MAT    |  14B  |  42.42   |  64.62   |   30.58    |   46.51    |  45.95  |     50.18     |
 
 2. Human evaluation. Each result cell shows the pass rate (\%) and the average score (in parentheses)
 
