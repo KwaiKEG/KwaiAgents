@@ -10,3 +10,4 @@ translate==3.6.1
 ephem==4.1.4
 transformers>=4.33.2
 tiktoken
+cryptography==42.0.1
