@@ -19,7 +19,7 @@ KwaiAgents は、[Kuaishou Technology](https://www.kuaishou.com/en) の [KwaiKEG
 3. **KAgentInstruct**: 論文で提案された200k以上のエージェント関連命令の微調整データ（部分的に人間が編集したもの）。
 4. **KAgentBench**: Agent の能力をテストするための、3,000を超える人間による自動化された評価データ。評価項目には、計画、ツールの使用、考察、結論、プロファイリングが含まれる。
 
-<table align='center' border>
+<table align='center'>
     <tr>
         <td align='center'><b>タイプ</b></td>
         <td align='center'><b>モデル</b></td>

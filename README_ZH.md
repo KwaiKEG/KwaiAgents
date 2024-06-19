@@ -20,7 +20,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 4. **KAgentBench**：超过3k条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等。
 
 <br>
-<table align='center' border>
+<table align='center'>
     <tr>
         <td align='center'><b>类别</b></td>
         <td align='center'><b>模型</b></td>

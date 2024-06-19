@@ -20,7 +20,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 4. **KAgentBench**: over 3,000 human-edited, automated evaluation data for testing Agent capabilities, with evaluation dimensions including planning, tool-use, reflection, concluding, and profiling.
 
 <br>
-<table align='center' border>
+<table align='center'>
     <tr>
         <td align='center'><b>Type</b></td>
         <td align='center'><b>Models</b></td>
