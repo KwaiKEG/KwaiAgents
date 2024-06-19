@@ -19,19 +19,31 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 3. **KAgentInstruct**: over 200k Agent-related instructions finetuning data (partially human-edited) proposed in the paper.
 4. **KAgentBench**: over 3,000 human-edited, automated evaluation data for testing Agent capabilities, with evaluation dimensions including planning, tool-use, reflection, concluding, and profiling.
 
-<table>
+<br>
+<table align='center' border>
     <tr>
-        <th>Models</th><th>Training Data</th><th>Benchmark Data</th>
+        <td align='center'><b>Type</b></td>
+        <td align='center'><b>Models</b></td>
+        <td align='center'><b>Training Data</b></td>
+        <td align='center'><b>Benchmark Data</b></td>
     </tr>
     <tr>
-        <td><a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a></td>
+        <td>Qwen</td>
+        <td>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a> <br> 
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat">Qwen-14B-MAT</a> <br>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat_gguf">Qwen-7B-MAT-cpp</a> <br>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen1.5_14b_mat">Qwen1.5-14B-MAT</a>
+        </td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a></td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a></td>
     </tr>
     <tr>
+        <td>Baichuan</td>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_baichuan2_13b_mat">Baichuan2-13B-MAT</a></td>
     </tr>
 </table>
+
 
 <br>
 
@@ -47,13 +59,13 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 
 ## News
 * 2024.4.19 - Qwen1.5-14B-MAT model [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen1.5_14b_mat) released. 
-* 2024.4.9 - Benchmark results have been refreshed, with the Qwen1.5-7B-MAT [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen1.5_7b_mat) outcomes now published.
+* 2024.4.9 - Benchmark results have been refreshed.
 * 2024.1.29 - Qwen-14B-MAT model [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) released.
 * 2023.1.5 - Training data [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) released.
-* 2023.12.27 - 🔥 KwaiAgents have been reported on many sites. [[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0), etc. 
-* 2023.12.13 - The benchmark and evaluation code [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) released 
-* 2023.12.08 - Technical report [[link]](https://arxiv.org/abs/2312.04889) released
-* 2023.11.17 - Initial release
+* 2023.12.27 - 🔥🔥🔥 KwaiAgents have been reported on many sites. [[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0), etc. 
+* 2023.12.13 - The benchmark and evaluation code [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) released.
+* 2023.12.08 - Technical report [[link]](https://arxiv.org/abs/2312.04889) release.
+* 2023.11.17 - Initial release.
 
 ## Evaluation
 1. Benchmark Results
@@ -70,7 +82,6 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 | Qwen-MAT       |  7B   |  31.64   |  43.30   |   33.34    |   44.85    |  44.78  |     39.85     |
 | Baichuan2-MAT  |  13B  |  37.27   |  52.97   |   37.00    |   48.01    |  41.83  |     45.34     |
 | Qwen-MAT       |  14B  |  43.17   |  63.78   |   32.14    |   45.47    |  45.22  |     49.94     |
-| Qwen1.5-MAT    |  7B   |  40.39   |  61.91   |   27.90    |   44.78    |  44.06  |     47.92     |
 | Qwen1.5-MAT    |  14B  |  42.42   |  64.62   |   30.58    |   46.51    |  45.95  |     50.18     |
 
 

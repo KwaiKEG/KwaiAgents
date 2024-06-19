@@ -19,19 +19,30 @@ KwaiAgents は、[Kuaishou Technology](https://www.kuaishou.com/en) の [KwaiKEG
 3. **KAgentInstruct**: 論文で提案された200k以上のエージェント関連命令の微調整データ（部分的に人間が編集したもの）。
 4. **KAgentBench**: Agent の能力をテストするための、3,000を超える人間による自動化された評価データ。評価項目には、計画、ツールの使用、考察、結論、プロファイリングが含まれる。
 
-<table>
+<table align='center' border>
     <tr>
-        <th>モデル</th><th>トレーニングデータ</th><th>ベンチマークデータ</th>
+        <td align='center'><b>タイプ</b></td>
+        <td align='center'><b>モデル</b></td>
+        <td align='center'><b>訓練データ</b></td>
+        <td align='center'><b>ベンチマークデータ</b></td>
     </tr>
     <tr>
-        <td><a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a></td>
+        <td>Qwen</td>
+        <td>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a> <br> 
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat">Qwen-14B-MAT</a> <br>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat_gguf">Qwen-7B-MAT-cpp</a> <br>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen1.5_14b_mat">Qwen1.5-14B-MAT</a>
+        </td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a></td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a></td>
     </tr>
     <tr>
+        <td>Baichuan</td>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_baichuan2_13b_mat">Baichuan2-13B-MAT</a></td>
     </tr>
 </table>
+
 
 <br>
 
@@ -46,9 +57,11 @@ KwaiAgents は、[Kuaishou Technology](https://www.kuaishou.com/en) の [KwaiKEG
 <p>
 
 ## ニュース
+* 2024年4月19日 - Qwen1.5-14B-MATモデル [[リンク]](https://huggingface.co/kwaikeg/kagentlms_qwen1.5_14b_mat) がリリースされました。
+* 2024年4月9日 - ベンチマーク結果が更新されました。
 * 2024.1.29 - Qwen-14B-MAT [[リンク]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) をリリース.
 * 2023.1.5 - トレーニングデータ[[リンク]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct)をリリース。
-* 2023.12.27 - 🔥 KwaiAgents　は多くのサイトで報告されている。[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0) など。
+* 2023.12.27 - 🔥🔥🔥 KwaiAgents　は多くのサイトで報告されている。[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0) など。
 * 2023.12.13 - 公開されたベンチマークと評価コード[[リンク]](https://huggingface.co/datasets/kwaikeg/KAgentBench)をリリース
 * 2023.12.08 - テクニカルレポート[[リンク]](https://arxiv.org/abs/2312.04889)をリリース
 * 2023.11.17 - 初回リリース
@@ -68,6 +81,8 @@ KwaiAgents は、[Kuaishou Technology](https://www.kuaishou.com/en) の [KwaiKEG
 | Qwen-MAT       |  7B   |  31.64   |  43.30   |   33.34    |   44.85    |  44.78  |     39.85     |
 | Baichuan2-MAT  |  13B  |  37.27   |  52.97   |   37.00    |   48.01    |  41.83  |     45.34     |
 | Qwen-MAT       |  14B  |  43.17   |  63.78   |   32.14    |   45.47    |  45.22  |     49.94     |
+| Qwen1.5-MAT    |  14B  |  42.42   |  64.62   |   30.58    |   46.51    |  45.95  |     50.18     |
+
 
 2. 人間による評価。各結果セルには、合格率(％)と平均点(括弧内)を示す。
 

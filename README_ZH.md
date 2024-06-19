@@ -13,22 +13,33 @@
 <br>
 
 
-KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套Agent系列工作。开源的内容包括
-1. **KAgentSys-Lite**：论文中KAgentSys的轻量版系统，其保留了部分原系统的功能。与功能齐全的系统相比，KAgentSys-Lite（1）缺少部分工具；（2）缺乏记忆机制；（3）性能稍有降低；（4）不同的代码库，Lite版本基于开源项目如BabyAGI和Auto-GPT。尽管有这些变更，KAgentSys-Lite在众多开源Agent系统中仍具有较好的性能。
-2. **KAgentLMs**：经过论文中提出的Meta-agent tuning过后，具有Agents的规划、反思、工具使用等能力的系列大模型
-3. **KAgentInstruct**：超过20w（部分人工编辑）的Agent相关的指令微调数据
-4. **KAgentBench**：>超过三千条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等
+KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套Agent系列工作。开源的内容包括：
+1. **KAgentSys-Lite**：论文中KAgentSys的轻量版系统，其保留了部分原系统的功能。与功能齐全的系统相比，KAgentSys-Lite（1）缺少部分工具；（2）缺乏记忆机制；（3）性能稍有降低；（4）不同的代码库，Lite版本基于开源项目如<a href='https://github.com/yoheinakajima/babyagi'>BabyAGI</a>和<a href='https://github.com/Significant-Gravitas/AutoGPT'>Auto-GPT</a>。尽管有这些变更，KAgentSys-Lite在众多开源Agent系统中仍具有较好的性能。
+2. **KAgentLMs**：经过论文中提出的Meta-agent tuning过后，具有Agents的规划、反思、工具使用等能力的系列大模型。
+3. **KAgentInstruct**：超过20w（部分人工编辑）的Agent相关的指令微调数据。
+4. **KAgentBench**：超过3k条经人工编辑的自动化评测Agent能力数据，能力评测维度包含规划、工具使用、反思、总结、人设指令等。
 
-<table>
+<br>
+<table align='center' border>
     <tr>
-        <th>模型</th><th>训练数据</th><th>Benchmark</th>
+        <td align='center'><b>类别</b></td>
+        <td align='center'><b>模型</b></td>
+        <td align='center'><b>训练数据</b></td>
+        <td align='center'><b>评测数据</b></td>
     </tr>
     <tr>
-        <td><a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a></td>
+        <td>Qwen</td>
+        <td>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat">Qwen-7B-MAT</a> <br> 
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat">Qwen-14B-MAT</a> <br>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen_7b_mat_gguf">Qwen-7B-MAT-cpp</a> <br>
+            <a href="https://huggingface.co/kwaikeg/kagentlms_qwen1.5_14b_mat">Qwen1.5-14B-MAT</a>
+        </td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentInstruct">KAgentInstruct</a></td>
         <td align="center" rowspan="2"><a href="https://huggingface.co/datasets/kwaikeg/KAgentBench">KAgentBench</a></td>
     </tr>
     <tr>
+        <td>Baichuan</td>
         <td><a href="https://huggingface.co/kwaikeg/kagentlms_baichuan2_13b_mat">Baichuan2-13B-MAT</a></td>
     </tr>
 </table>
@@ -42,12 +53,14 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 <p>
 
 ## 动态
+* 2024.4.19 - Qwen1.5-14B-MAT模型[[link]](https://huggingface.co/kwaikeg/kagentlms_qwen1.5_14b_mat) 公开.
+* 2024.4.9 - Benchmark结果更新.
 * 2024.1.29 - Qwen-14B-MAT模型 [[link]](https://huggingface.co/kwaikeg/kagentlms_qwen_14b_mat) 公开.
 * 2023.1.5 - 训练数据 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentInstruct) 公开.
-* 2023.12.27 - 🔥 KwaiAgents 被国内外多个媒体报道[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0)等. 
-* 2023.12.13 - Benchmark和评测脚本 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) 公开 
-* 2023.12.08 - 技术报告 [[link]](https://arxiv.org/abs/2312.04889) 公开
-* 2023.11.17 - 项目公开
+* 2023.12.27 - 🔥🔥🔥 KwaiAgents 被国内外多个媒体报道[[机器之心]](https://mp.weixin.qq.com/s/QhZIFL1GHH90z98gnk194g) [[Medium]](https://medium.com/@myscarletpan/can-7b-models-now-master-ai-agents-a-look-at-kwais-recent-llm-open-source-release-8b9e84647412) [[InfoQ]](https://www.infoq.cn/article/xHGJwG3b8hXSdaP4m6r0)等.
+* 2023.12.13 - Benchmark和评测脚本 [[link]](https://huggingface.co/datasets/kwaikeg/KAgentBench) 公开.
+* 2023.12.08 - 技术报告 [[link]](https://arxiv.org/abs/2312.04889) 公开.
+* 2023.11.17 - 项目公开.
 
 ## 评测表现
 1. KAgentLMs在Benchmark上的表现
@@ -64,6 +77,7 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
 | Qwen-MAT       |  7B   |  31.64   |  43.30   |   33.34    |   44.85    |  44.78  |     39.85     |
 | Baichuan2-MAT  |  13B  |  37.27   |  52.97   |   37.00    |   48.01    |  41.83  |     45.34     |
 | Qwen-MAT       |  14B  |  43.17   |  63.78   |   32.14    |   45.47    |  45.22  |     49.94     |
+| Qwen1.5-MAT    |  14B  |  42.42   |  64.62   |   30.58    |   46.51    |  45.95  |     50.18     |
 
 
 2. KAgentSys在人工评测上的表现 （百分号前的表示通过率，括号后表示平均分）
