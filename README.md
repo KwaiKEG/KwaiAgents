@@ -46,6 +46,7 @@ KwaiAgents is a series of Agent-related works open-sourced by the [KwaiKEG](http
 
 
 <br>
+<br>
 
 <p align="center">
     <img src="blob/example.gif"/>

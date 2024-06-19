@@ -44,7 +44,12 @@ KwaiAgents 是[快手快知团队](https://github.com/KwaiKEG)开源的一整套
     </tr>
 </table>
 
-<img src="blob/example-zh.gif"/>
+<br>
+<br>
+
+<p align="center">
+    <img src="blob/example-zh.gif">
+</p>
 
 <br>
 
