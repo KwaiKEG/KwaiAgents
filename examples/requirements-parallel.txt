@@ -1,0 +1,3 @@
+# Optional dependencies for parallel_search_example.py (Python 3.10+).
+mcp>=1.28,<2
+httpx>=0.27,<1
