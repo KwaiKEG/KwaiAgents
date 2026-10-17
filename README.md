@@ -228,6 +228,9 @@ options:
 #### Using Custom tools
 Custom tools usage can be found in <a href="examples/custom_tool_example.py">examples/custom_tool_example.py</a> 
 
+For an optional web search tool that needs no Parallel API key, see the
+[Parallel Search MCP example](examples/parallel_search.md).
+
 ### Using KAgentBench Evaluation
 We only need two lines to evaluate the agent capabilities like:
 ```bash
